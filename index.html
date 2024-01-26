@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>My Library</h1>
+    <button id="new-book">Add New Book</button>
+    <div id="library">
+    </div>
+    <dialog close>
+        <h1>New Book</h1>
+        <form method="dialog">
+            <div id="dialog-title">
+                <span>TITLE</span>
+                <input id='title-input' type="text">
+            </div>
+            <div id="dialog-author">
+                <span>AUTHOR</span>
+                <input id='author-input' type="text">
+            </div>
+            <div id="dialog-pages">
+                <span>PAGES</span>
+                <input id='pages-input' type="text">
+            </div>
+            <div id="dialog-read">
+                <span>Have you finished this book?</span>
+                <input id="read-input" type="radio">
+            </div>
+            <button id="submit-book">Add</button>
+        </form>
+    </dialog>
+    <script>
+        const myLibrary = [];
+        function Book(title, author, pages, read) {
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.read = read;
+        }
+        let library = document.querySelector("#library");
+        let addBookBtn = document.querySelector('#new-book');
+        let addBookWindow = document.querySelector('dialog');
+        let submitBookBtn = document.querySelector("#submit-book");
+        function displayBooksinLibrary() {
+            for (i = 0; i <= myLibrary.length - 1; i++) {
+                let book = myLibrary[i];
+                displayBook(book);
+            }
+        }
+        book1 = new Book("Brave New World", "Aldous Huxley", 268, "True");
+        function addBookToLibrary(newBook) {
+            myLibrary.push(newBook);
+            displayBook(newBook);
+        }
+        function displayBook(newBook) {
+            let book = document.createElement('div');
+            book.className = 'book';
+            console.log(newBook.title);
+            book.textContent = newBook.title;
+            library.appendChild(book);
+            console.table(myLibrary);
+        }
+        addBookBtn.addEventListener('click', function () {
+            addBookWindow.show();
+        })
+        submitBookBtn.addEventListener('click', function () {
+            let titleEntry = document.querySelector('#title-input').value;
+            let authorEntry = document.querySelector('#author-input').value;
+            let pagesEntry = document.querySelector('#pages-input').value;
+            let readEntry = document.querySelector('#read-input').value;
+            let index = myLibrary.length + 1;
+            let newBook = "book" + index;
+            newBook = new Book(titleEntry, authorEntry, pagesEntry, readEntry);
+            addBookToLibrary(newBook);
+
+        })
+        addBookToLibrary(book1);
+        displayBooksinLibrary();
+        console.table(myLibrary);
+    </script>
+</body>
+
+</html>

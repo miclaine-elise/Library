@@ -1,0 +1,14 @@
+body {
+    font-family: sans-serif;
+}
+
+#library {
+    display: grid;
+    grid-template-columns: 200px;
+    grid-template-rows: 200px;
+    gap: 1rem;
+}
+
+.book {
+    background-color: green;
+}
