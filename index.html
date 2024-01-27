@@ -31,18 +31,18 @@
             </div>
             <div id="dialog-read">
                 <span>Have you finished this book?</span>
-                <input id="read-input" type="radio">
+                <input id="read-input" type="checkbox">
             </div>
             <button id="submit-book">Add</button>
         </form>
     </dialog>
     <script>
         const myLibrary = [];
-        function Book(title, author, pages, read) {
+        function Book(title, author, pages, status) {
             this.title = title;
             this.author = author;
             this.pages = pages;
-            this.read = read;
+            this.status = status;
         }
         let library = document.querySelector("#library");
         let addBookBtn = document.querySelector('#new-book');
@@ -55,9 +55,10 @@
                 displayBook(book);
             }
         }
-        book1 = new Book("Brave New World", "Aldous Huxley", 268, "True");
+        book1 = new Book("Brave New World", "Aldous Huxley", 268, true);
         function addBookToLibrary(newBook) {
             myLibrary.push(newBook);
+            console.table(myLibrary);
             displayBook(newBook);
         }
         function displayBook(newBook) {
@@ -65,12 +66,39 @@
             book.className = 'book';
             let index = myLibrary.length - 1;
             book.id = 'book' + index;
-            book.textContent = newBook.title;
             library.appendChild(book);
+
+            let title = document.createElement('span');
+            title.className = "book-title";
+            title.textContent = newBook.title;
+            book.appendChild(title);
+
+            let author = document.createElement('span');
+            author.className = "book-author";
+            author.textContent = newBook.author;
+            book.appendChild(author);
+
+            let pages = document.createElement('span');
+            pages.className = "book-pages";
+            pages.textContent = "pages: " + newBook.pages;
+            book.appendChild(pages);
+
+            let status = document.createElement('button');
+            status.className = "book-status";
+            console.log(newBook.status);
+            if (newBook.status == true) {
+                status.textContent = "Read";
+            } else {
+                status.textContent = "Not Read";
+            }
+            book.appendChild(status);
+
             let deleteBtn = document.createElement('button');
             deleteBtn.className = 'deleteBtn';
-            deleteBtn.textContent = "Delete";
+            let deleteIcon = document.createElement('img');
+            deleteIcon.src = "window-close.svg";
             book.appendChild(deleteBtn);
+            deleteBtn.appendChild(deleteIcon);
             deleteBtn.addEventListener('click', function () {
                 let bookId = this.parentElement.id;
                 let index = bookId.slice(4);
@@ -86,8 +114,8 @@
             let titleEntry = document.querySelector('#title-input').value;
             let authorEntry = document.querySelector('#author-input').value;
             let pagesEntry = document.querySelector('#pages-input').value;
-            let readEntry = document.querySelector('#read-input').value;
-            let newBook = new Book(titleEntry, authorEntry, pagesEntry, readEntry);
+            let statusEntry = document.querySelector('#read-input').checked;
+            let newBook = new Book(titleEntry, authorEntry, pagesEntry, statusEntry);
             addBookToLibrary(newBook);
 
         })

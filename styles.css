@@ -1,14 +1,45 @@
 body {
     font-family: sans-serif;
+    background-color: rgb(182, 206, 198);
 }
 
 #library {
     display: grid;
-    grid-template-columns: 200px;
-    grid-template-rows: 200px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
 }
 
 .book {
-    background-color: green;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 2rem 1rem 1rem 2rem 2rem;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    justify-items: center;
+
+}
+
+.book-title {
+    font-size: 1.5rem;
+}
+
+.book-author {
+    color: gray;
+}
+
+.deleteBtn img {
+    height: 1rem;
+    filter: invert(100%);
+}
+
+.deleteBtn {
+    background-color: rgb(182, 206, 198);
+    border-radius: 50%;
+    height: 1.25rem;
+    width: 1.25rem;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
