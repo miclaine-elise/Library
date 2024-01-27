@@ -48,6 +48,7 @@
         let addBookBtn = document.querySelector('#new-book');
         let addBookWindow = document.querySelector('dialog');
         let submitBookBtn = document.querySelector("#submit-book");
+
         function displayBooksinLibrary() {
             for (i = 0; i <= myLibrary.length - 1; i++) {
                 let book = myLibrary[i];
@@ -62,11 +63,22 @@
         function displayBook(newBook) {
             let book = document.createElement('div');
             book.className = 'book';
-            console.log(newBook.title);
+            let index = myLibrary.length - 1;
+            book.id = 'book' + index;
             book.textContent = newBook.title;
             library.appendChild(book);
-            console.table(myLibrary);
+            let deleteBtn = document.createElement('button');
+            deleteBtn.className = 'deleteBtn';
+            deleteBtn.textContent = "Delete";
+            book.appendChild(deleteBtn);
+            deleteBtn.addEventListener('click', function () {
+                let bookId = this.parentElement.id;
+                let index = bookId.slice(4);
+                myLibrary.splice(index, 1);
+                this.parentElement.remove();
+            })
         }
+
         addBookBtn.addEventListener('click', function () {
             addBookWindow.show();
         })
@@ -75,14 +87,12 @@
             let authorEntry = document.querySelector('#author-input').value;
             let pagesEntry = document.querySelector('#pages-input').value;
             let readEntry = document.querySelector('#read-input').value;
-            let index = myLibrary.length + 1;
-            let newBook = "book" + index;
-            newBook = new Book(titleEntry, authorEntry, pagesEntry, readEntry);
+            let newBook = new Book(titleEntry, authorEntry, pagesEntry, readEntry);
             addBookToLibrary(newBook);
 
         })
         addBookToLibrary(book1);
-        displayBooksinLibrary();
+        // displayBooksinLibrary();
         console.table(myLibrary);
     </script>
 </body>
