@@ -1,31 +1,60 @@
 body {
     font-family: sans-serif;
-    background-color: rgb(182, 206, 198);
+    background-color: rgb(243, 236, 230);
+}
+
+h1 {
+    font-family: "Asap Condensed";
+    font-size: 4rem;
+    padding: 1rem;
+    margin: 0;
+    color: black;
 }
 
 #library {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
+    margin: 1rem;
+}
+
+#new-book {
+    background-color: rgb(100, 71, 42);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    box-shadow: 0.25rem 0.25rem 1rem black;
 }
 
 .book {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-rows: 2rem 1rem 1rem 2rem 2rem;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 1rem;
     border-radius: 1rem;
     justify-items: center;
-
+    align-items: center;
+    box-shadow: 0.5rem 0.5rem 1rem black;
 }
 
 .book-title {
     font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(100, 71, 42);
 }
 
 .book-author {
-    color: gray;
+    color: black;
+    font-size: 1rem;
+}
+
+.book-pages {
+    color: black;
+    font-size: 0.75rem;
 }
 
 .deleteBtn img {
@@ -34,7 +63,7 @@ body {
 }
 
 .deleteBtn {
-    background-color: rgb(182, 206, 198);
+    background-color: black;
     border-radius: 50%;
     height: 1.25rem;
     width: 1.25rem;
@@ -42,4 +71,13 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
+}
+
+.book-status {
+    background-color: rgb(155, 134, 113);
+    ;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
