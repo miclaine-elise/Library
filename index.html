@@ -15,25 +15,21 @@
 </head>
 
 <body>
-    <h1>MY LIBRARY</h1>
+    <h1 id="page-title">MY LIBRARY</h1>
     <button id="new-book">Add New Book</button>
     <div id="library">
     </div>
     <dialog close>
         <h1>New Book</h1>
         <form method="dialog">
-            <div id="dialog-title">
-                <span>TITLE</span>
-                <input id='title-input' type="text">
-            </div>
-            <div id="dialog-author">
-                <span>AUTHOR</span>
-                <input id='author-input' type="text">
-            </div>
-            <div id="dialog-pages">
-                <span>PAGES</span>
-                <input id='pages-input' type="text">
-            </div>
+            <span>TITLE</span>
+            <input id='title-input' type="text">
+
+            <span>AUTHOR</span>
+            <input id='author-input' type="text">
+
+            <span>PAGES</span>
+            <input id='pages-input' type="text">
             <div id="dialog-read">
                 <span>Have you finished this book?</span>
                 <input id="read-input" type="checkbox">
