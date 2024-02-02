@@ -8,7 +8,7 @@ h1 {
     font-size: 4rem;
     padding: 1rem;
     margin: 0;
-    color: black;
+    color: rgb(138, 113, 88);
 }
 
 #library {
@@ -19,7 +19,7 @@ h1 {
 }
 
 #new-book {
-    background-color: rgb(100, 71, 42);
+    background-color: rgb(138, 113, 88);
     color: white;
     border: none;
     padding: 0.5rem;
@@ -74,7 +74,7 @@ h1 {
 }
 
 .book-status {
-    background-color: rgb(155, 134, 113);
+    background-color: rgb(100, 71, 42);
     ;
     color: white;
     border: none;

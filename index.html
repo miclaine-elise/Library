@@ -91,7 +91,7 @@
             let statusBtn = document.createElement('button');
             statusBtn.className = "book-status";
             console.log(newBook.statusBtn);
-            if (newBook.statusBtn == true) {
+            if (newBook.status == true) {
                 statusBtn.textContent = "Read";
             } else {
                 statusBtn.textContent = "Not Read";
@@ -99,11 +99,23 @@
             book.appendChild(statusBtn);
 
             statusBtn.addEventListener('click', function () {
-                if (statusBtn.textContent == 'Read') {
-                    statusBtn.textContent = 'Not Read'
+                let index = this.parentElement.id.slice(4);
+                book = myLibrary[index];
+                console.log(book);
+                if (book.status == true) {
+                    console.log("before: " + statusBtn.textContent);
+                    statusBtn.textContent = 'Not Read';
+                    console.log("after: " + statusBtn.textContent);
+                    book.status = false;
+                    console.table(myLibrary);
+
                 } else {
-                    statusBtn.textContent = "Read"
+                    statusBtn.textContent = "Read";
+                    book.status = true;
+
                 }
+                console.table(myLibrary);
+
             })
             let deleteBtn = document.createElement('button');
             deleteBtn.className = 'deleteBtn';
